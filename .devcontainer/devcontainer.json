@@ -1,12 +1,14 @@
 {
   "name": "C Dev Container",
   "dockerFile": "../Dockerfile",
+  "remoteUser": "vscode",
 
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-vscode.cpptools-extension-pack",
-        "formulahendry.code-runner"
+        "formulahendry.code-runner",
+        "ms-azuretools.vscode-containers"
       ]
     }
   }
