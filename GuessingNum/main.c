@@ -2,37 +2,41 @@
 #include <stdlib.h>
 #include <time.h>
 
-int getRandomNumber(int lower, int upper);
+int getRandom();
 
 int main()
 {
+
     srand(time(NULL));
-    int lower = 1, upper = 100;
-    int randomNumber = getRandomNumber(lower, upper);
-    int userGuess = 0;
 
-    while (userGuess != randomNumber)
+    int x = getRandom();
+    int u = 0;
+    printf("%d\n", x);
+
+    printf("bienvenue au jeu  nombre magic  \n");
+
+    while (x != u)
     {
-        printf("Guess a number between %d and %d: ", lower, upper);
-        scanf("%d", &userGuess);
-
-        if (userGuess < randomNumber)
+        printf("entrez un nombre entre 0 et 100 !\n");
+        scanf("%d", &u);
+        if (x > u)
         {
-            printf("Too low! Try again.\n");
+            printf("plus grand encore \n");
         }
-        else if (userGuess > randomNumber)
+        else if (x < u)
         {
-            printf("Too high! Try again.\n");
+            printf("plus petit  encore \n");
         }
         else
         {
-            printf("Congratulations! You guessed the number %d correctly!\n", randomNumber);
+            printf("bingo vous avez réussi \n");
         }
     }
+
     return 0;
 }
 
-int getRandomNumber(int lower, int upper)
+int getRandom()
 {
-    return rand() % (upper - lower + 1) + lower;
+    return rand() % 101;
 }
