@@ -1,20 +1,21 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-int random();
+#include <string.h>
 
 int main()
 {
-    int random_1 = random();
+    char buffer[100];
 
-    printf("random number: %d\n", random_1);
+    printf("Entre ton texte : ");
+
+    // fgets lit TOUT, y compris le \n
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL)
+    {
+
+        // On enlève le \n si présent
+        buffer[strcspn(buffer, "\n")] = '\0';
+
+        printf("Tu as écrit : \"%s\"\n", buffer);
+    }
 
     return 0;
-}
-
-int random()
-{
-    srand(time(NULL));
-    return rand() % 10;
 }
