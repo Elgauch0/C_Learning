@@ -3,8 +3,8 @@ CFLAGS = -Wall -Wextra -std=c11
 
 all: main
 
-main: main.c
-	$(CC) $(CFLAGS) -o main main.c
+main: exercice.c
+	$(CC) $(CFLAGS) -o main exercice.c
 
 clean:
 	rm -f main *.o

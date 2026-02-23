@@ -29,3 +29,49 @@ Stack *stack_new(size_t capacity)
 
     return ptr;
 }
+
+void stack_push(Stack *stack, void *obj)
+{
+
+    if (stack->capacity == stack->count)
+    {
+        stack->capacity *= 2;
+
+        void **temp = (void **)realloc(stack->data, sizeof(void *) * stack->capacity);
+        if (!temp)
+        {
+            // echec de realloc
+            stack->capacity /= 2;
+            return;
+        }
+        stack->data = temp;
+        temp = NULL;
+    }
+
+    stack->data[stack->count] = obj;
+    stack->count++;
+    return;
+}
+
+void *stack_pop(Stack *stack)
+{
+
+    if (stack->count == 0)
+        return;
+
+    stack->count--;
+    return stack->data[stack->count];
+}
+
+void stack_free(Stack *stack)
+{
+
+    if (!stack)
+        return;
+
+    free(stack->data);
+    free(stack);
+
+    stack->data = NULL;
+    stack = NULL;
+}
